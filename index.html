@@ -1,20 +1,115 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <title>Chatbot test 1</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="index.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>    
   </head>
   <body>
-    <ul id="messages"></ul>
+
+    <span id="leftMessageTemplate" style="visibility:hidden">
+      <li class="left clearfix"><span class="chat-img pull-left">
+          <img src="http://placehold.it/50/55C1E7/fff&text=BOT" alt="API.AI" class="img-circle" />
+      </span>
+          <div class="chat-body clearfix">
+              <div class="header">
+                      <small><span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+              </div>
+              <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                  dolor, quis ullamcorper ligula sodales.
+              </p>
+          </div>
+      </li>
+    </span>  
+
+    <span id="rightMessageTemplate" style="visibility:hidden">
+      <li class="right clearfix"><span class="chat-img pull-right">
+          <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="Me" class="img-circle" />
+      </span>
+          <div class="chat-body clearfix">
+              <div class="header">
+                  <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+              </div>
+              <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                  dolor, quis ullamcorper ligula sodales.
+              </p>
+          </div>
+      </li>
+    </span>      
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-comment"></span> API.AI bot
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </button>
+                            <ul class="dropdown-menu slidedown">
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
+                                </span>Refresh</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
+                                </span>Available</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
+                                </span>Busy</a></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
+                                    Away</a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
+                                    Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="chat" id="chatBox">
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-warning btn-sm" id="btn-chat">
+                                    Send</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      var socket = io();
+      $('#btn-chat').click(function(){
+
+        var message = $('#btn-input').val();
+
+        if (message) {
+          socket.emit('chat message', message);
+          $('#btn-input').val('');
+          return false;          
+        } 
+      });
+      socket.on('chat message', function(payload){
+        var messageTemplate = (payload.from === "self") ? "rightMessageTemplate" : "leftMessageTemplate";
+        $("#" + messageTemplate + " li p").text(payload.content);
+        $('#chatBox').append($('#' + messageTemplate)[0].innerHTML);            
+
+//        $('#messages').append($('<li>').text(msg));
+      });
+    </script>    
+
+<!--    <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
@@ -30,6 +125,6 @@
       socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
       });
-    </script>
+    </script>-->
   </body>
 </html>
