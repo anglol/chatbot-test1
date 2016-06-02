@@ -18,22 +18,26 @@ io.on('connection', function(socket){
   	socket.on('chat message', function(msg){
   	
   		if (msg) {
-		  	var request = apiaiClient.textRequest(msg);
+  			console.log("socket.id : " + socket.id);
+		  	var request = apiaiClient.textRequest(msg.message, {sessionId: socket.id});
+		  	console.log(request);
 		  	request.end();
 
 		  	var payload = {
 		  		from: "self",
-		  		content: msg
+		  		content: msg.message,
 		  	};
 
 		    io.emit('chat message', payload);
 			request.on('response', function(response) {
 
+				console.log(response);
+
 			  	var payload = {
 			  		from: "api.ai",
 			  		content: response.result.fulfillment.speech
 			  	};				
-		    	io.emit('chat message', payload);
+		    	socket.emit('chat message', payload);
 			});
   		}
 

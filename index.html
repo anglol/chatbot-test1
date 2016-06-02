@@ -90,19 +90,23 @@
 
     <script>
       var socket = io();
+
       $('#btn-chat').click(function(){
 
-        var message = $('#btn-input').val();
-
-        if (message) {
-          socket.emit('chat message', message);
+        if ($('#btn-input').val()) {
+          var payload = {
+            message: $('#btn-input').val(),
+          }
+          socket.emit('chat message', payload);
           $('#btn-input').val('');
-          return false;          
-        } 
+          return false;                    
+        }
       });
-      socket.on('chat message', function(payload){
-        var messageTemplate = (payload.from === "self") ? "rightMessageTemplate" : "leftMessageTemplate";
-        $("#" + messageTemplate + " li p").text(payload.content);
+
+      socket.on('chat message', function(response){
+
+        var messageTemplate = (response.from === "self") ? "rightMessageTemplate" : "leftMessageTemplate";
+        $("#" + messageTemplate + " li p").text(response.content);
         $('#chatBox').append($('#' + messageTemplate)[0].innerHTML);            
 
 //        $('#messages').append($('<li>').text(msg));
