@@ -10,15 +10,33 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/index.css', function(req, res){
+  res.sendFile(__dirname + '/index.css');
+});
+
 io.on('connection', function(socket){
   	socket.on('chat message', function(msg){
-  	var request = apiaiClient.textRequest(msg);
-  	request.end();
-    io.emit('chat message', 'MOI > ' + msg);
-	request.on('response', function(response) {
-	    console.log(response);
-    	io.emit('chat message', 'ROBOT > ' + response.result.fulfillment.speech);	    
-	});
+  	
+  		if (msg) {
+		  	var request = apiaiClient.textRequest(msg);
+		  	request.end();
+
+		  	var payload = {
+		  		from: "self",
+		  		content: msg
+		  	};
+
+		    io.emit('chat message', payload);
+			request.on('response', function(response) {
+
+			  	var payload = {
+			  		from: "api.ai",
+			  		content: response.result.fulfillment.speech
+			  	};				
+		    	io.emit('chat message', payload);
+			});
+  		}
+
 
  
 	request.on('error', function(error) {
