@@ -1,24 +1,26 @@
 {
-  "name": "dlab-chatbot1",
+  "name": "chatbot1-test1",
   "version": "1.0.0",
   "description": "Distribution Lab API.AI chatbot test",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.13.4"
+    "apiai": "^2.0.5",
+    "express": "^4.13.4",
+    "socket.io": "^1.4.6"
   },
   "devDependencies": {},
   "scripts": {
-      "start" : "node index.js",
-      "test": "echo \"Warning: no test specified\" && exit 0"
+    "start": "node index.js",
+    "test": "echo \"Warning: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frozinoer/dlab-chatbot1.git"
+    "url": "git+https://github.com/frozinoer/chatbot1-test1.git"
   },
   "author": "Fabrice Rozinoer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/frozinoer/dlab-chatbot1/issues"
+    "url": "https://github.com/frozinoer/chatbot1-test1/issues"
   },
-  "homepage": "https://github.com/frozinoer/dlab-chatbot1#readme"
+  "homepage": "https://github.com/frozinoer/chatbot1-test1#readme"
 }
