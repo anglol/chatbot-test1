@@ -28,7 +28,7 @@ io.on('connection', function(socket){
 		  		content: msg.message,
 		  	};
 
-		    io.emit('chat message', payload);
+		    socket.emit('chat message', payload);
 			request.on('response', function(response) {
 
 				console.log(response);
