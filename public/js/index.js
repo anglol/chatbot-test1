@@ -7,7 +7,7 @@ $(window).load(function() {
   $messages.mCustomScrollbar();
   setTimeout(function() {
       var welcome = "Hi there, how can I help you ?";
-      $('<div class="message new"><figure class="avatar"><img src="http://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80_4.jpg" /></figure>' + welcome + '</div>').appendTo($('.mCSB_container')).addClass('new');
+      $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + welcome + '</div>').appendTo($('.mCSB_container')).addClass('new');
   }, 100);
 
 
@@ -34,10 +34,10 @@ $(window).load(function() {
 
     if (response.from === "self") {
       $('<div class="message message-personal">' + response.content + '</div>').appendTo($('.mCSB_container')).addClass('new');
-      $('<div class="message loading new"><figure class="avatar"><img src="http://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80_4.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));          
+      $('<div class="message loading new"><figure class="avatar"><img src="images/apiai.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));          
     } else {
       $('.message.loading').remove();
-      $('<div class="message new"><figure class="avatar"><img src="http://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80_4.jpg" /></figure>' + response.content + '</div>').appendTo($('.mCSB_container')).addClass('new');
+      $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + response.content + '</div>').appendTo($('.mCSB_container')).addClass('new');
     }
     updateScrollbar();
 
@@ -119,12 +119,12 @@ function fakeMessage() {
   if ($('.message-input').val() != '') {
     return false;
   }
-  $('<div class="message loading new"><figure class="avatar"><img src="http://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80_4.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  $('<div class="message loading new"><figure class="avatar"><img src="images/apiai.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
   updateScrollbar();
 
   setTimeout(function() {
     $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="http://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80_4.jpg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
     setDate();
     updateScrollbar();
     i++;
