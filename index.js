@@ -5,11 +5,34 @@ var io = require('socket.io')(http);
 var apiai = require('apiai');
 var apiaiClient = apiai("82e98d777ee945bc912643cd073a9a20");
 var jsonfile = require('jsonfile');
+var basicAuth = require('basic-auth');
+
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static('public'));
 
-app.get('/', function(req, res){
+
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.send(401);
+  };
+
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  if (user.name === 'contact@distributionlab.com' && user.pass === 'lb€pdAx7') {
+    return next();
+  } else {
+    return unauthorized(res);
+  };
+};
+
+
+app.get('/', auth, function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
