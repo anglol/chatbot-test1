@@ -3,7 +3,11 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var apiai = require('apiai');
-var apiaiClient = apiai("82e98d777ee945bc912643cd073a9a20");
+// CHATBOT 1
+//var apiaiClient = apiai("82e98d777ee945bc912643cd073a9a20");
+// CHATBOT 2
+//var apiaiClient = apiai("04cb2a587f704397800fd62c9ecfabd5");
+var apiaiClient = apiai("f83c20e2568641128261f275d8d392b2");
 var jsonfile = require('jsonfile');
 //var basicAuth = require('basic-auth');
 
@@ -71,7 +75,7 @@ io.on('connection', function(socket){
 			  		content: result
 			  	};				
 
-				if (result && result.action.startsWith(infoPrefix)) {
+				if (result && result.action && result.action.startsWith(infoPrefix)) {
 
 					var id = result.action.substr(infoPrefix.length);
 					console.log(helloData[id])					
