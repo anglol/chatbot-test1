@@ -129,6 +129,11 @@
     "request": "What is meant by simpler and more transparent service at Bot bank!?",
     "response": "Simple means an application that is easy to download and to use that allows you to: \n  - Carry out all your daily operations. \n  - Follow the evolution of your account and the expenses incurred with your Bot Credit card. \n  - Subscribe to new products -savings accounts, insurance, credit ...-.  \nBut simplicity with Bot bank! goes even further. It is present in the design of our products that are created to meet the needs of urban and mobile clients."
   },
+  "what-is-bot-bank-q10": {
+    "categoryTitle": "What is Bot bank! ?",
+    "request": "What is bank of the test?",
+    "response": "Bank of the Test is the market leader in Botland and part of the Botbank group, the number one bank in the Eurozone for deposits and one of the six most secure banks in the world according to Standard & Poor's. The group has more than 200,000 employees in 84 countries."
+  },  
   "support-and-help-q1": {
     "categoryTitle": "Support and help",
     "request": "My card doesn't work. What should I do?",
