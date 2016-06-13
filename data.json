@@ -12,7 +12,7 @@
   "already-bank-of-the-test-client--q3": {
     "categoryTitle": "Already Bank of the Test client ?",
     "request": "I would like to open a Bot Current Account, or a Bot4You Current Account, alongside my Bank of the Test current account. What do I need to do?",
-    "response": "C'est très simpIt's very simple: \n  1. Download the app Bot bank! -available on the App Store and Google Play-. \n  2. Click on \"login\". \n  3. Enter your Bank of the Test customer number  and your Bank of the Test card number. \nYou will then have the option to convert your Bank of the Test account into a Bot Current Account or a Bot4You Current Account."
+    "response": "It's very simple: \n  1. Download the app Bot bank! -available on the App Store and Google Play-. \n  2. Click on \"login\". \n  3. Enter your Bank of the Test customer number  and your Bank of the Test card number. \nYou will then have the option to convert your Bank of the Test account into a Bot Current Account or a Bot4You Current Account."
   },
   "already-bank-of-the-test-client--q4": {
     "categoryTitle": "Already Bank of the Test client ?",
@@ -128,6 +128,11 @@
     "categoryTitle": "What is Bot bank! ?",
     "request": "What is meant by simpler and more transparent service at Bot bank!?",
     "response": "Simple means an application that is easy to download and to use that allows you to: \n  - Carry out all your daily operations. \n  - Follow the evolution of your account and the expenses incurred with your Bot Credit card. \n  - Subscribe to new products -savings accounts, insurance, credit ...-.  \nBut simplicity with Bot bank! goes even further. It is present in the design of our products that are created to meet the needs of urban and mobile clients."
+  },
+  "what-is-bot-bank-q10": {
+    "categoryTitle": "What is Bot bank! ?",
+    "request": "What is bank of the test?",
+    "response": "Bank of the Test is the market leader in Botland and part of the Botbank group, the number one bank in the Eurozone for deposits and one of the six most secure banks in the world according to Standard & Poor's. The group has more than 200,000 employees in 84 countries."
   },
   "support-and-help-q1": {
     "categoryTitle": "Support and help",
