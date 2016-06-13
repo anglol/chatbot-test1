@@ -30,7 +30,7 @@ $(window).load(function() {
 
   $messages.mCustomScrollbar();
   setTimeout(function() {
-      var welcome = "Hi there, how can I help you ?";
+      var welcome = "Hello, my name is Gaëlle, I’m your personal BotBank Assistant. I can provide some assistance on BotBank products and services or help you find an ATM. You can also ask me about weather forecast. \n\nHow can I help you?";
       $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + welcome + '</div>').appendTo($('.mCSB_container')).addClass('new');
   }, 100);
 
