@@ -63,7 +63,7 @@ $(window).load(function() {
 
   socket.on('chat message', function(response){
 
-    console.log(response);
+//    console.log(response);
     $('.message.loading').remove();
 
     var text;
@@ -80,6 +80,8 @@ $(window).load(function() {
         break;
 
       case "api.ai":
+
+        console.log("action: " + response.content.action);
 
         switch(response.content.action) {
           default:
