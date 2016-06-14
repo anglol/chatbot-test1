@@ -80,7 +80,7 @@ $(window).load(function() {
       case "self":
         text = response.content.replace(/\n/g, "<br />");
         $('<div class="message message-personal">' + text + '</div>').appendTo($('.mCSB_container')).addClass('new');
-        $('<div class="message loading new"><figure class="avatar"><img src="images/apiai.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));                  
+        $('<div class="message loading new"><figure class="avatar"><img src="images/avatar-bot-75.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));                  
         break;
 
       case "api.ai":
@@ -88,7 +88,7 @@ $(window).load(function() {
         switch(response.content.action) {
           default:
             text = (response.content.fulfillment.speech.replace(/\n/g, "<br />") || getRandomText());
-            $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + text + '</div>').appendTo($('.mCSB_container')).addClass('new');
+            $('<div class="message new"><figure class="avatar"><img src="images/avatar-bot-75.png" /></figure>' + text + '</div>').appendTo($('.mCSB_container')).addClass('new');
             break;
         }
     }
