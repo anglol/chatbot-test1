@@ -2,7 +2,7 @@ var $messages = $('.messages-content'),
     d, h, m,
     i = 0;
 
-var options = {
+/*var options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
@@ -22,7 +22,7 @@ function geolocSuccess(pos) {
 
 function geolocError(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
-};
+};*/
 
 
 
@@ -30,14 +30,18 @@ $(window).load(function() {
 
   $messages.mCustomScrollbar();
   setTimeout(function() {
-      var welcome = "Hi there, how can I help you ?";
-      $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + welcome + '</div>').appendTo($('.mCSB_container')).addClass('new');
+      var welcome = "Hello, my name is Gaëlle, I’m your personal BotBank Assistant. I can provide some assistance on BotBank products and services or help you find an ATM. You can also ask me about weather forecast.";
+      $('<div class="message new"><figure class="avatar"><img src="images/avatar-bot-75.png" /></figure>' + welcome + '</div>').appendTo($('.mCSB_container')).addClass('new');
   }, 100);
+  setTimeout(function() {
+      var welcome = "How can I help you?";
+      $('<div class="message new"><figure class="avatar"><img src="images/avatar-bot-75.png" /></figure>' + welcome + '</div>').appendTo($('.mCSB_container')).addClass('new');
+  }, 1000);  
 
 
-  if (navigator.geolocation) {
+/*  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(geolocSuccess, geolocError, options);
-  }
+  }*/
 
   socket = io();
 
@@ -84,7 +88,7 @@ $(window).load(function() {
         switch(response.content.action) {
           default:
             text = (response.content.fulfillment.speech.replace(/\n/g, "<br />") || getRandomText());
-            $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + text + '</div>').appendTo($('.mCSB_container')).addClass('new');        
+            $('<div class="message new"><figure class="avatar"><img src="images/apiai.png" /></figure>' + text + '</div>').appendTo($('.mCSB_container')).addClass('new');
             break;
         }
     }
@@ -124,12 +128,12 @@ function insertMessage() {
     message: $('.message-input').val(),
   }
 
-  if (position && position.coords) {
+/*  if (position && position.coords) {
       payload.location = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       }
-  }
+  }*/
 
 
   socket.emit('chat message', payload);
