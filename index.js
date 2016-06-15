@@ -58,7 +58,7 @@ io.on('connection', function(socket){
 
   			// Provides a fixed client id to API.AI to manage the context properly
   			var params = {
-				sessionId: socket.id;
+				sessionId: socket.id
   			}
 
   			if (msg.location) {
@@ -70,7 +70,7 @@ io.on('connection', function(socket){
 
 		  	var payload = {
 		  		from: "self",
-		  		content: msg.message,
+		  		content: msg.message
 		  	};
 
 		    socket.emit('chat message', payload);
